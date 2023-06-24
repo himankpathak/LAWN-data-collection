@@ -23,10 +23,11 @@ def sendAlert(e):
 
     message = Mail(
         from_email="a@example.com",
-        to_emails=["b@example.com", "c@example.com"],
+        to_emails=["hp433822@ohio.edu"],
         subject="LAWN Data Collection box error",
-        html_content="<strong>Hello, Course registration is open.</strong><br/>Open at:"
+        html_content="<strong>Error at </strong>"
         + now.strftime("%m/%d/%Y, %H:%M:%S")
+        + "<br/>"
         + str(e),
     )
 
