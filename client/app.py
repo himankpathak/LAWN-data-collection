@@ -1,4 +1,5 @@
-from flask import Flask, render_template
+from flask import Flask
+from dotenv import load_dotenv
 from datetime import datetime
 from zoneinfo import ZoneInfo
 from base64 import b85encode
@@ -7,6 +8,7 @@ import requests, os
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
 
+load_dotenv()
 app = Flask(__name__)
 
 
@@ -48,6 +50,7 @@ def send_image(image):
                 "accept": "application/json, text/plain, */*",
                 "content-type": "application/json",
             },
+            auth=(os.environ.get("USER_NAME"), os.environ.get("SECRET_KEY")),
             json=body,
         )
 
