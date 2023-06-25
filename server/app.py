@@ -40,7 +40,12 @@ def store_image():
             os.makedirs(folder)
             print("IMAGE_COLLECT_PATH directory created!")
 
-        with open(os.environ.get("IMAGE_COLLECT_PATH") + "imageToSave.jpg", "wb") as im:
+        with open(
+            os.environ.get("IMAGE_COLLECT_PATH")
+            + request.headers.get("timestamp")
+            + ".jpg",
+            "wb",
+        ) as im:
             im.write(b85decode(img_data))
 
         return {}, 200
