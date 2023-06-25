@@ -50,6 +50,7 @@ def send_image(image):
             headers={
                 "accept": "application/json, text/plain, */*",
                 "content-type": "application/json",
+                "timestamp": getCurrDate().strftime("%Y-%m-%d_%H-%M-%S"),
             },
             auth=(os.environ.get("USER_NAME"), os.environ.get("SECRET_KEY")),
             json=body,
